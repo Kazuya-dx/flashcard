@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSelector, useDispatch } from "react-redux";
 import { changeIsBeginner } from "../store/user";
-import { setStudyMode } from "../store/mode";
+import { setModalVisible } from "../store/modal";
+import Modal from "react-native-modal";
 import Guide from "./Guide";
 import Study from "./Study";
 import Profile from "./Profile";
 
 const Page1 = () => {
+  const isModalVisible = useSelector(
+    (state: any) => state.modal.isModalVisible
+  );
+  const dispatch = useDispatch();
+
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>学習</Text>
+      <Button
+        title="学習を始める"
+        onPress={() => {
+          dispatch(setModalVisible({}));
+        }}
+      />
+      <Modal isVisible={isModalVisible} style={{ margin: 0 }}>
+        <Study />
+      </Modal>
     </View>
   );
 };
@@ -54,7 +69,7 @@ const Debug = () => {
       <Button
         title="学習を始める"
         onPress={() => {
-          dispatch(setStudyMode({}));
+          dispatch(setModalVisible({}));
         }}
       />
     </View>
@@ -64,48 +79,43 @@ const Debug = () => {
 const Index = () => {
   const Tab = createBottomTabNavigator();
   const isBeginner = useSelector((state: any) => state.user.isBeginner);
-  const mode = useSelector((state: any) => state.mode.mode);
 
   if (isBeginner) {
     return <Guide />;
   } else {
-    if (mode === "study") {
-      return <Study />;
-    } else {
-      return (
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName = "";
+    return (
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName = "";
 
-                if (route.name === "コミュニティ") {
-                  iconName = focused ? "ios-people" : "ios-people";
-                } else if (route.name === "プロフィール") {
-                  iconName = focused ? "ios-person" : "ios-person";
-                } else if (route.name === "デバッグ") {
-                  iconName = focused ? "ios-list-box" : "ios-list";
-                } else if (route.name === "学習") {
-                  iconName = focused ? "ios-school" : "ios-school";
-                }
+              if (route.name === "コミュニティ") {
+                iconName = focused ? "ios-people" : "ios-people";
+              } else if (route.name === "プロフィール") {
+                iconName = focused ? "ios-person" : "ios-person";
+              } else if (route.name === "デバッグ") {
+                iconName = focused ? "ios-list-box" : "ios-list";
+              } else if (route.name === "学習") {
+                iconName = focused ? "ios-school" : "ios-school";
+              }
 
-                // You can return any component that you like here!
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-            })}
-            tabBarOptions={{
-              activeTintColor: "tomato",
-              inactiveTintColor: "gray",
-            }}
-          >
-            <Tab.Screen name="学習" component={Page1} />
-            <Tab.Screen name="コミュニティ" component={Page2} />
-            <Tab.Screen name="デバッグ" component={Debug} />
-            <Tab.Screen name="プロフィール" component={Profile} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      );
-    }
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: "tomato",
+            inactiveTintColor: "gray",
+          }}
+        >
+          <Tab.Screen name="学習" component={Page1} />
+          <Tab.Screen name="コミュニティ" component={Page2} />
+          <Tab.Screen name="デバッグ" component={Debug} />
+          <Tab.Screen name="プロフィール" component={Profile} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    );
   }
 };
 

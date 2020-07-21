@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Button, TouchableOpacity, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
-import { setTopMode } from "../store/mode";
+import { setModalVisible } from "../store/modal";
 import { useDispatch } from "react-redux";
 import * as Speech from "expo-speech";
 import mockwords from "../mock/words.json";
@@ -19,6 +19,7 @@ const Study = () => {
     <View
       style={{
         flex: 1,
+        backgroundColor: "#fff",
       }}
     >
       <View
@@ -92,7 +93,7 @@ const Study = () => {
               if (no < words.length) {
                 setNo(no + 1);
               } else {
-                dispatch(setTopMode({}));
+                dispatch(setModalVisible({}));
               }
             }}
           >
@@ -115,7 +116,7 @@ const Study = () => {
               if (no < words.length) {
                 setNo(no + 1);
               } else {
-                dispatch(setTopMode({}));
+                dispatch(setModalVisible({}));
               }
             }}
           >
@@ -138,7 +139,7 @@ const Study = () => {
               if (no < words.length) {
                 setNo(no + 1);
               } else {
-                dispatch(setTopMode({}));
+                dispatch(setModalVisible({}));
               }
             }}
           >
@@ -150,7 +151,7 @@ const Study = () => {
         <Button
           title="戻る"
           onPress={() => {
-            dispatch(setTopMode({}));
+            dispatch(setModalVisible({}));
           }}
         />
       </View>
