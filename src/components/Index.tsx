@@ -8,11 +8,12 @@ import { changeIsBeginner } from "../store/user";
 import { setStudyMode } from "../store/mode";
 import Guide from "./Guide";
 import Study from "./Study";
+import Profile from "./Profile";
 
 const Page1 = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>ホーム</Text>
+      <Text>学習</Text>
     </View>
   );
 };
@@ -20,7 +21,7 @@ const Page1 = () => {
 const Page2 = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>学習</Text>
+      <Text>コミュニティ</Text>
     </View>
   );
 };
@@ -78,8 +79,8 @@ const Index = () => {
               tabBarIcon: ({ focused, color, size }) => {
                 let iconName = "";
 
-                if (route.name === "ホーム") {
-                  iconName = focused ? "ios-home" : "ios-home";
+                if (route.name === "コミュニティ") {
+                  iconName = focused ? "ios-people" : "ios-people";
                 } else if (route.name === "プロフィール") {
                   iconName = focused ? "ios-person" : "ios-person";
                 } else if (route.name === "デバッグ") {
@@ -97,10 +98,10 @@ const Index = () => {
               inactiveTintColor: "gray",
             }}
           >
-            <Tab.Screen name="ホーム" component={Page1} />
-            <Tab.Screen name="学習" component={Page2} />
+            <Tab.Screen name="学習" component={Page1} />
+            <Tab.Screen name="コミュニティ" component={Page2} />
             <Tab.Screen name="デバッグ" component={Debug} />
-            <Tab.Screen name="プロフィール" component={Page3} />
+            <Tab.Screen name="プロフィール" component={Profile} />
           </Tab.Navigator>
         </NavigationContainer>
       );
