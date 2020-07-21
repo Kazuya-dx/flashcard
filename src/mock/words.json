@@ -1,0 +1,72 @@
+[
+  {
+    "no": 0,
+    "en": "apple",
+    "jp": "りんご",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 1,
+    "en": "banana",
+    "jp": "バナナ",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 2,
+    "en": "english",
+    "jp": "英語",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 3,
+    "en": "study",
+    "jp": "勉強する",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 4,
+    "en": "give",
+    "jp": "与える",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 5,
+    "en": "strong",
+    "jp": "強い",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 6,
+    "en": "coffee",
+    "jp": "コーヒー",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 7,
+    "en": "drink",
+    "jp": "飲む",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 8,
+    "en": "head",
+    "jp": "頭",
+    "categoly": "collage1",
+    "difficuly": 1
+  },
+  {
+    "no": 9,
+    "en": "key",
+    "jp": "鍵",
+    "categoly": "collage1",
+    "difficuly": 1
+  }
+]
