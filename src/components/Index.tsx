@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -21,7 +21,7 @@ const Page1 = () => {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>学習</Text>
       <Button
-        title="学習を始める"
+        title="テストプレイ"
         onPress={() => {
           dispatch(setModalVisible({}));
         }}
@@ -37,14 +37,6 @@ const Page2 = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>コミュニティ</Text>
-    </View>
-  );
-};
-
-const Page3 = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>プロフィール</Text>
     </View>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { View, Text, Button, TouchableOpacity, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
 import { setModalVisible } from "../store/modal";
@@ -49,13 +50,21 @@ const Study = () => {
               fontWeight: "bold",
               color: "#fff",
             }}
-            onPress={() => {
-              Speech.stop();
-              Speech.speak(words[no - 1].en, { rate: 0.7, onDone: () => {} });
-            }}
           >
             {words[no - 1].en}
           </Text>
+          <View style={{ alignItems: "center", paddingTop: 60 }}>
+            <Text style={{ color: "#FFF" }}>音声</Text>
+            <Ionicons
+              name="ios-play-circle"
+              size={20}
+              color="#FFF"
+              onPress={() => {
+                Speech.stop();
+                Speech.speak(words[no - 1].en, { rate: 0.7, onDone: () => {} });
+              }}
+            />
+          </View>
         </View>
         <View
           style={{
