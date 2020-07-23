@@ -6,32 +6,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSelector, useDispatch } from "react-redux";
 import { changeIsBeginner } from "../store/user";
 import { setModalVisible } from "../store/modal";
-import Modal from "react-native-modal";
 import Guide from "./Guide";
-import Study from "./Study";
+import Learning from "./Learning";
 import Profile from "./Profile";
-
-const Page1 = () => {
-  const isModalVisible = useSelector(
-    (state: any) => state.modal.isModalVisible
-  );
-  const dispatch = useDispatch();
-
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>学習</Text>
-      <Button
-        title="テストプレイ"
-        onPress={() => {
-          dispatch(setModalVisible({}));
-        }}
-      />
-      <Modal isVisible={isModalVisible} style={{ margin: 0 }}>
-        <Study />
-      </Modal>
-    </View>
-  );
-};
 
 const Page2 = () => {
   return (
@@ -101,7 +78,7 @@ const Index = () => {
             inactiveTintColor: "gray",
           }}
         >
-          <Tab.Screen name="学習" component={Page1} />
+          <Tab.Screen name="学習" component={Learning} />
           <Tab.Screen name="コミュニティ" component={Page2} />
           <Tab.Screen name="デバッグ" component={Debug} />
           <Tab.Screen name="プロフィール" component={Profile} />
