@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useFocusEffect } from "@react-navigation/native";
-import { View, Text, ScrollView } from "react-native";
+import React from "react";
+import { useIsFocused } from "@react-navigation/native";
+import { View, Text, ScrollView, Button } from "react-native";
 import { Header } from "react-native-elements";
-import { VictoryChart, VictoryBar } from "victory-native";
+import { VictoryChart, VictoryBar, VictoryAxis } from "victory-native";
 
 const Profile = () => {
-  const [checkRender, setCheckRender] = useState(false);
+  const isFocused = useIsFocused();
   const beforeData = [
     { date: "7/22", workload: 0 },
     { date: "7/23", workload: 0 },
@@ -24,10 +24,6 @@ const Profile = () => {
     { date: "7/27", workload: 180 },
     { date: "7/28", workload: 165 },
   ];
-  useFocusEffect(() => {
-    console.log("after");
-    setCheckRender(true);
-  });
 
   return (
     <View style={{ flex: 1 }}>
@@ -39,12 +35,19 @@ const Profile = () => {
         backgroundColor="#fff"
       />
       <ScrollView>
-        {!checkRender ? (
+        {isFocused ? (
           <VictoryChart // adding the material theme provided with Victory
             domainPadding={20}
           >
+            <VictoryAxis
+              // tickValues specifies both the number of ticks and where
+              // they are placed on the axis
+              tickValues={[1, 2, 3, 4, 5, 6, 7]}
+            />
+            <VictoryAxis dependentAxis />
             <VictoryBar
-              data={beforeData}
+              animate={{ easing: "exp" }}
+              data={data}
               x="date"
               y="workload"
               barWidth={25}
@@ -55,9 +58,14 @@ const Profile = () => {
           <VictoryChart // adding the material theme provided with Victory
             domainPadding={20}
           >
+            <VictoryAxis
+              // tickValues specifies both the number of ticks and where
+              // they are placed on the axis
+              tickValues={[1, 2, 3, 4, 5, 6, 7]}
+            />
+            <VictoryAxis dependentAxis tickFormat={(x) => ""} />
             <VictoryBar
-              animate={{ easing: "exp" }}
-              data={data}
+              data={beforeData}
               x="date"
               y="workload"
               barWidth={25}
