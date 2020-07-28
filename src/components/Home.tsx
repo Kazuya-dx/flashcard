@@ -1,6 +1,6 @@
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { Text, View, Button } from "react-native";
+import { ActivityIndicator, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import { setModalVisible } from "../store/modal";
 import Guide from "./Guide";
 import Learning from "./Learning";
 import Profile from "./Profile";
+import firebase from "firebase";
 
 const Page2 = () => {
   return (
@@ -41,11 +42,19 @@ const Debug = () => {
           dispatch(setModalVisible({}));
         }}
       />
+      <Button
+        title="ログアウト"
+        onPress={() => {
+          alert("ログアウトしました");
+          firebase.auth().signOut();
+        }}
+      />
+      <ActivityIndicator size="large" color="tomato" />
     </View>
   );
 };
 
-const Index = () => {
+const Home = () => {
   const Tab = createBottomTabNavigator();
   const isBeginner = useSelector((state: any) => state.user.isBeginner);
 
@@ -88,4 +97,4 @@ const Index = () => {
   }
 };
 
-export default Index;
+export default Home;

@@ -1,26 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { View, Text, Button, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  TouchableOpacity,
+  LayoutAnimation,
+} from "react-native";
 import Swiper from "react-native-swiper";
 import { setModalVisible } from "../store/modal";
 import { useDispatch } from "react-redux";
 import * as Speech from "expo-speech";
 import mockwords from "../mock/words.json";
+import Result from "./Result";
 
 const Study = () => {
   const dispatch = useDispatch();
+  const [randomkey, setRandomkey] = useState(0);
+  const [isResult, setIsResult] = useState(false);
   const [words, setWords] = useState(mockwords);
   const [no, setNo] = useState(1);
+
   useEffect(() => {
     Speech.stop();
     Speech.speak(words[no - 1].en, { rate: 0.7 });
   }, [no]);
 
+  if (isResult) {
+    return <Result />;
+  }
+
   return (
     <View
       style={{
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#f3f3f3",
       }}
     >
       <View
@@ -35,30 +49,30 @@ const Study = () => {
           {no} / {words.length}
         </Text>
       </View>
-      <Swiper style={styles.wrapper} height={450} loop={false}>
+      <Swiper key={randomkey} style={styles.wrapper} height={450} loop={false}>
         <View
           style={{
             flex: 1,
             paddingTop: 150,
             alignItems: "center",
-            backgroundColor: "#9DD6EB",
+            backgroundColor: "#FFF",
           }}
         >
           <Text
             style={{
               fontSize: 35,
               fontWeight: "bold",
-              color: "#fff",
+              color: "#333",
             }}
           >
             {words[no - 1].en}
           </Text>
           <View style={{ alignItems: "center", paddingTop: 60 }}>
-            <Text style={{ color: "#FFF" }}>音声</Text>
+            <Text style={{ color: "#333" }}>音声</Text>
             <Ionicons
               name="ios-play-circle"
               size={20}
-              color="#FFF"
+              color="#333"
               onPress={() => {
                 Speech.stop();
                 Speech.speak(words[no - 1].en, { rate: 0.7, onDone: () => {} });
@@ -71,10 +85,10 @@ const Study = () => {
             flex: 1,
             paddingTop: 160,
             alignItems: "center",
-            backgroundColor: "#97CAE5",
+            backgroundColor: "#FFF",
           }}
         >
-          <Text style={{ fontSize: 35, fontWeight: "bold", color: "#fff" }}>
+          <Text style={{ fontSize: 35, fontWeight: "bold", color: "#333" }}>
             {words[no - 1].jp}
           </Text>
         </View>
@@ -100,9 +114,11 @@ const Study = () => {
             onPress={() => {
               Speech.stop();
               if (no < words.length) {
+                LayoutAnimation.easeInEaseOut();
+                setRandomkey(Math.random);
                 setNo(no + 1);
               } else {
-                dispatch(setModalVisible({}));
+                setIsResult(true);
               }
             }}
           >
@@ -123,9 +139,11 @@ const Study = () => {
             onPress={() => {
               Speech.stop();
               if (no < words.length) {
+                LayoutAnimation.easeInEaseOut();
+                setRandomkey(Math.random);
                 setNo(no + 1);
               } else {
-                dispatch(setModalVisible({}));
+                setIsResult(true);
               }
             }}
           >
@@ -146,9 +164,11 @@ const Study = () => {
             onPress={() => {
               Speech.stop();
               if (no < words.length) {
+                LayoutAnimation.easeInEaseOut();
+                setRandomkey(Math.random);
                 setNo(no + 1);
               } else {
-                dispatch(setModalVisible({}));
+                setIsResult(true);
               }
             }}
           >

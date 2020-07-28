@@ -29,7 +29,7 @@ const Profile = () => {
     <View style={{ flex: 1 }}>
       <Header
         centerComponent={{
-          text: "寺田心",
+          text: "アカウント名",
           style: { fontSize: 18, fontWeight: "bold", color: "#333" },
         }}
         backgroundColor="#fff"
@@ -63,6 +63,7 @@ const Profile = () => {
               // they are placed on the axis
               tickValues={[1, 2, 3, 4, 5, 6, 7]}
             />
+
             <VictoryAxis dependentAxis tickFormat={(x) => ""} />
             <VictoryBar
               data={beforeData}
