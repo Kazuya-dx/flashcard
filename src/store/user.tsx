@@ -25,6 +25,14 @@ const slice = createSlice({
         isGuest: action.payload.isGuest,
       });
     },
+    clearUsersInfo: (state, action) => {
+      return Object.assign({}, state, {
+        uid: "",
+        name: "",
+        isBeginner: false,
+        isGuest: true,
+      });
+    },
     changeIsBeginner: (state, action) => {
       return Object.assign({}, state, { isBeginner: !state.isBeginner });
     },
@@ -33,4 +41,4 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const { setUsersInfo, changeIsBeginner } = slice.actions;
+export const { setUsersInfo, clearUsersInfo, changeIsBeginner } = slice.actions;

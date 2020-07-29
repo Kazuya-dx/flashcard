@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSelector, useDispatch } from "react-redux";
 import { changeIsBeginner } from "../store/user";
 import { setModalVisible } from "../store/modal";
+import useLogout from "../hooks/useLogout";
 import Guide from "./Guide";
 import Learning from "./Learning";
 import Profile from "./Profile";
@@ -21,6 +22,7 @@ const Page2 = () => {
 
 const Debug = () => {
   const dispatch = useDispatch();
+  const logout = useLogout();
   return (
     <View
       style={{
@@ -46,9 +48,7 @@ const Debug = () => {
         title="ログアウト"
         onPress={() => {
           alert("ログアウトしました");
-          if (firebase.auth().currentUser) {
-            firebase.auth().signOut();
-          }
+          logout();
         }}
       />
       <ActivityIndicator size="large" color="tomato" />

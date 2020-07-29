@@ -11,19 +11,27 @@ import Swiper from "react-native-swiper";
 import { setModalVisible } from "../store/modal";
 import { useDispatch } from "react-redux";
 import * as Speech from "expo-speech";
-import mockwords from "../mock/words.json";
+import wordsdata from "../mock/words.json";
 import Result from "./Result";
 
-const Study = () => {
+const Study: React.FC<{ category?: string }> = ({
+  category = "【受験英語 初級1】 No1〜No10",
+}) => {
   const dispatch = useDispatch();
   const [randomkey, setRandomkey] = useState(0);
   const [isResult, setIsResult] = useState(false);
-  const [words, setWords] = useState(mockwords);
+  const [words, setWords] = useState(
+    wordsdata.filter((value) => value.category == category).length > 0
+      ? wordsdata.filter((value) => value.category == category)
+      : wordsdata
+  );
   const [no, setNo] = useState(1);
 
   useEffect(() => {
-    Speech.stop();
-    Speech.speak(words[no - 1].en, { rate: 0.7 });
+    if (words.length > 0) {
+      Speech.stop();
+      Speech.speak(words[no - 1].en, { rate: 0.7 });
+    }
   }, [no]);
 
   if (isResult) {

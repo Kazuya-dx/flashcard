@@ -3,70 +3,112 @@
     "no": 0,
     "en": "apple",
     "jp": "りんご",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 1,
     "en": "banana",
     "jp": "バナナ",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 2,
     "en": "English",
     "jp": "英語",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 3,
     "en": "study",
     "jp": "勉強する",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 4,
     "en": "give",
     "jp": "与える",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 5,
     "en": "strong",
     "jp": "強い",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 6,
     "en": "coffee",
     "jp": "コーヒー",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 7,
     "en": "drink",
     "jp": "飲む",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 8,
     "en": "head",
     "jp": "頭",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
     "difficuly": 1
   },
   {
     "no": 9,
     "en": "key",
     "jp": "鍵",
-    "categoly": "collage1",
+    "category": "【受験英語 初級1】 No1〜No10",
+    "difficuly": 1
+  },
+  {
+    "no": 10,
+    "en": "school",
+    "jp": "学校",
+    "category": "【受験英語 初級2】 No11〜No20",
+    "difficuly": 1
+  },
+  {
+    "no": 11,
+    "en": "phone",
+    "jp": "電話",
+    "category": "【受験英語 初級2】 No11〜No20",
+    "difficuly": 1
+  },
+  {
+    "no": 12,
+    "en": "board",
+    "jp": "板",
+    "category": "【受験英語 初級2】 No11〜No20",
+    "difficuly": 1
+  },
+  {
+    "no": 13,
+    "en": "weight",
+    "jp": "重さ",
+    "category": "【受験英語 初級2】 No11〜No20",
+    "difficuly": 1
+  },
+  {
+    "no": 14,
+    "en": "everyday",
+    "jp": "毎日",
+    "category": "【受験英語 初級2】 No11〜No20",
+    "difficuly": 1
+  },
+  {
+    "no": 15,
+    "en": "ask",
+    "jp": "尋ねる",
+    "category": "【受験英語 初級2】 No11〜No20",
     "difficuly": 1
   }
 ]

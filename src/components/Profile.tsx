@@ -1,6 +1,6 @@
 import React from "react";
 import { useIsFocused } from "@react-navigation/native";
-import { View, Text, ScrollView, Button } from "react-native";
+import { View, Text, ScrollView, Dimensions } from "react-native";
 import { useSelector } from "react-redux";
 import { Header } from "react-native-elements";
 import { VictoryChart, VictoryBar, VictoryAxis } from "victory-native";
@@ -34,12 +34,55 @@ const Profile = () => {
           text: user.name + (user.isGuest ? "(Guest)" : ""),
           style: { fontSize: 18, fontWeight: "bold", color: "#333" },
         }}
-        backgroundColor="#fff"
+        backgroundColor="#FFF"
       />
-      <ScrollView>
+      <ScrollView style={{ backgroundColor: "#FFF" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            height: 150,
+            backgroundColor: "#F3F3F3",
+          }}
+        >
+          <View
+            style={{
+              width: "50%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{ width: 100, height: 100, backgroundColor: "tomato" }}
+            ></View>
+          </View>
+          <View
+            style={{
+              width: "50%",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={{ paddingBottom: 10 }}>Level 0</Text>
+            <Text style={{ paddingBottom: 10 }}>ランク Beginner</Text>
+            <Text style={{ paddingBottom: 10 }}>コイン 0</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            height: 50,
+            justifyContent: "center",
+            paddingLeft: 30,
+          }}
+        >
+          <Text style={{ fontSize: 18, fontWeight: "bold", color: "#333" }}>
+            学習した単語数
+          </Text>
+        </View>
         {isFocused ? (
           <VictoryChart // adding the material theme provided with Victory
             domainPadding={20}
+            height={250}
+            width={Dimensions.get("screen").width + 25}
+            padding={{ top: 0, left: 50, right: 50, bottom: 50 }}
           >
             <VictoryAxis
               // tickValues specifies both the number of ticks and where
@@ -59,6 +102,9 @@ const Profile = () => {
         ) : (
           <VictoryChart // adding the material theme provided with Victory
             domainPadding={20}
+            height={250}
+            width={Dimensions.get("screen").width + 25}
+            padding={{ top: 20, left: 50, right: 50, bottom: 50 }}
           >
             <VictoryAxis
               // tickValues specifies both the number of ticks and where
