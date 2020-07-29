@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
-import Home from "../Home";
-import SignUp from "../screens/SignUp";
-import { ActivityIndicator, View, Text } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import firebase from "firebase";
+import useSetUser from "../../hooks/useSetUser";
 import { useNavigation } from "../../hooks/useNavigation";
 
 const Loading = () => {
+  const setUser = useSetUser();
   const navigation = useNavigation();
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user?.uid);
+      }
       navigation.navigate(user ? "Home" : "SignUp");
     });
   });

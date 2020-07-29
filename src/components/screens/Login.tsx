@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { View, Form, Item, Input, Button, Text } from "native-base";
 import firebase from "firebase";
+import useSetUser from "../../hooks/useSetUser";
 
 const Login = () => {
+  const setUser = useSetUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = (email: string, password: string) => {
@@ -13,6 +15,7 @@ const Login = () => {
         setEmail("");
         setPassword("");
         alert("success");
+        setUser(user.user?.uid);
         // 登録後のページへ遷移させる
       })
       .catch((error) => alert(error));

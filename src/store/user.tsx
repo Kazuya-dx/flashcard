@@ -1,16 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  test: "test",
+interface User {
+  uid: string | null;
+  name: string;
+  isBeginner: boolean;
+  isGuest: boolean;
+}
+
+const initialState: User = {
+  uid: "",
+  name: "",
   isBeginner: true,
+  isGuest: true,
 };
 
 const slice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setTest: (state, action) => {
-      return Object.assign({}, state, { test: "Hello" });
+    setUsersInfo: (state, action) => {
+      return Object.assign({}, state, {
+        uid: action.payload.uid,
+        name: action.payload.name,
+        isGuest: action.payload.isGuest,
+      });
     },
     changeIsBeginner: (state, action) => {
       return Object.assign({}, state, { isBeginner: !state.isBeginner });
@@ -20,4 +33,4 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const { setTest, changeIsBeginner } = slice.actions;
+export const { setUsersInfo, changeIsBeginner } = slice.actions;

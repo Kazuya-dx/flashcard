@@ -46,7 +46,9 @@ const Debug = () => {
         title="ログアウト"
         onPress={() => {
           alert("ログアウトしました");
-          firebase.auth().signOut();
+          if (firebase.auth().currentUser) {
+            firebase.auth().signOut();
+          }
         }}
       />
       <ActivityIndicator size="large" color="tomato" />

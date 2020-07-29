@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setUsersInfo } from "../../store/user";
 import { View, Form, Item, Input, Button, Text } from "native-base";
 import { useNavigation } from "../../hooks/useNavigation";
 import firebase from "firebase";
@@ -8,6 +10,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const handleSignUp = (email: string, password: string) => {
     firebase
       .auth()
@@ -25,8 +28,11 @@ const SignUp = () => {
     firebase
       .auth()
       .signInAnonymously()
-      .then(() => {
+      .then((user) => {
         alert("ログインしました");
+        dispatch(
+          setUsersInfo({ uid: user.user?.uid, name: "ゲスト", isGuest: true })
+        );
       })
       .catch((error) => alert(error));
   };

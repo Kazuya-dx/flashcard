@@ -1,10 +1,12 @@
 import React from "react";
 import { useIsFocused } from "@react-navigation/native";
 import { View, Text, ScrollView, Button } from "react-native";
+import { useSelector } from "react-redux";
 import { Header } from "react-native-elements";
 import { VictoryChart, VictoryBar, VictoryAxis } from "victory-native";
 
 const Profile = () => {
+  const user = useSelector((state: any) => state.user);
   const isFocused = useIsFocused();
   const beforeData = [
     { date: "7/22", workload: 0 },
@@ -29,7 +31,7 @@ const Profile = () => {
     <View style={{ flex: 1 }}>
       <Header
         centerComponent={{
-          text: "アカウント名",
+          text: user.name + (user.isGuest ? "(Guest)" : ""),
           style: { fontSize: 18, fontWeight: "bold", color: "#333" },
         }}
         backgroundColor="#fff"
